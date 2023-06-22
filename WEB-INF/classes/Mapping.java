@@ -3,7 +3,7 @@ package etu1929.framework;
 public class Mapping {
     String className;
     String method;
-    
+
     public void setClassName(String className) {
         this.className = className;
     }
@@ -15,5 +15,10 @@ public class Mapping {
     }
     public String getMethod() {
         return method;
+    }
+
+    public Mapping(String className, String method){
+        setClassName(className);
+        setMethod(method);
     }
 }

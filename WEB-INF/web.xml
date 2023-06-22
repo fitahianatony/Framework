@@ -27,9 +27,9 @@
     <servlet>
       <servlet-name>FrontServlet</servlet-name>
       <servlet-class>etu1929.framework.servlet.FrontServlet</servlet-class>
-    </servlet>    
+    </servlet>
     <servlet-mapping>
         <servlet-name>FrontServlet</servlet-name>
-        <url-pattern>*</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 </web-app>
