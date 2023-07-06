@@ -1,5 +1,9 @@
 {
     "githubPullRequests.ignoredPullRequestBranches": [
         "main"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "test-framework\\WEB-INF\\lib\\fwk.jar"
     ]
 }
