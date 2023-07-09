@@ -68,9 +68,23 @@ public class FrontServlet extends jakarta.servlet.http.HttpServlet{
     }
 
     protected void processRequest(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+            protected void processRequest(HttpServletRequest req,HttpServletResponse res) throws IOException{
         res.setContentType("text/plain");
         PrintWriter out = res.getWriter();
-        out.println(urlMapping);
+        String url = req.getRequestURI();
+        url = url.split("/")[url.split("/").length - 1];
+        out.println(url);
+        if(urlMapping.containsKey(url)){
+            try {
+                Object act = Class.forName(urlMapping.get(url).getClassName()).newInstance();
+                ModelView mv = (ModelView)act.getClass().getDeclaredMethod(urlMapping.get(url).getMethod()).invoke(act);
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher(mv.getView());    
+                requestDispatcher.forward(req,res);
+            } catch (Exception e) {
+                    e.printStackTrace();
+            }
+        }
+    }
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
